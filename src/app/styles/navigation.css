@@ -31,3 +31,69 @@
 .hire-me {
   @apply border border-[var(--color-rose-gold)] text-rose-gold px-6 py-3 rounded-full font-medium transition-all hover:bg-[var(--color-rose-gold-dark)] hover:text-[var(--color-brand-dark)] hover:-translate-y-0.5;
 }
+
+/* --- Responsive / Mobile Navigation --- */
+/* Default: show desktop nav, hide hamburger/mobile menu */
+.hamburger {
+  @apply hidden;
+}
+.mobile-menu {
+  @apply hidden;
+}
+.nav-cta {
+  @apply hidden;
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .navbar-container {
+    @apply px-4 py-3;
+  }
+
+  /* Hide desktop nav and CTA */
+  .nav-list,
+  .nav-cta {
+    @apply hidden;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    @apply inline-flex flex-col gap-1 w-10 h-8 items-center justify-center rounded-md border-2 border-[var(--color-brand-muted)] bg-[var(--color-brand-dark)];
+  }
+
+  .hamburger-bar {
+    @apply w-5 h-[2px] bg-[var(--color-rose-gold)] transition-transform duration-250 ease-in-out rounded-full;
+  }
+
+  /* Animate into X */
+  .hamburger.is-active .hamburger-bar:nth-child(1) {
+    @apply translate-y-[6px] rotate-45;
+  }
+  .hamburger.is-active .hamburger-bar:nth-child(2) {
+    @apply opacity-0;
+  }
+  .hamburger.is-active .hamburger-bar:nth-child(3) {
+    @apply -translate-y-[6px] -rotate-45;
+  }
+
+  /* Mobile dropdown panel */
+  .mobile-menu {
+    @apply block absolute top-[56px] left-0 right-0 bg-[var(--color-brand-dark)] backdrop-blur-[10px] border-b border-[rgba(228,213,199,0.1)] transform -translate-y-[8px] opacity-0 pointer-events-none transition-opacity duration-200 transition-transform duration-200;
+  }
+  .mobile-menu-open {
+    @apply translate-y-[0] opacity-100 pointer-events-auto;
+  }
+  .mobile-menu-content {
+    @apply flex flex-col gap-1 p-2;
+    
+  }
+  .mobile-link {
+    @apply text-default p-3 rounded-md text-base font-normal tracking-wide transition-all hover:text-hover hover:bg-[rgba(228,213,199,0.06)];
+  }
+  .mobile-link-active {
+    @apply text-rose-gold bg-[var(--color-brand-light)] font-medium;
+  }
+  .mobile-cta {
+    @apply border border-[var(--color-rose-gold)] text-rose-gold px-4 py-3 rounded-lg font-medium text-center mt-2 transition-all hover:bg-[var(--color-rose-gold-dark)] hover:text-[var(--color-brand-dark)];
+  }
+}

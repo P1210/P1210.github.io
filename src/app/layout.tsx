@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "./Navbar";
+import { NavbarClient } from "./Navbar";
 
 export const metadata: Metadata = {
   title: "Pranjal Gupta",
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <NavbarClient />
         <div className="h-full p-8"> {children}</div>
       </body>
     </html>

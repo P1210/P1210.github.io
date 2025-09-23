@@ -9,6 +9,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./styles/navigation.css";
+import dynamic from "next/dynamic";
 
 const components: { title: string; href: string }[] = [
   { title: "About", href: "/" },
@@ -102,3 +103,13 @@ export function Navbar() {
     </div>
   );
 }
+
+// dynamic import for navbar to avoid hydration errors in case of route changes
+// import() is a function that returns a Promise that resolves to the module object, and it only accepts a module path as a string.
+// dynamic() expects a Promise that resolves to a React component, receives a function that returns a Promise resolving to a React component,
+export const NavbarClient = dynamic(
+  () => import("./Navbar").then((mod) => mod.Navbar),
+  {
+    ssr: false,
+  }
+);

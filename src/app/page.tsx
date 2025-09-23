@@ -39,7 +39,8 @@ export const SidebarCard = ({ title, data, icon }: SidebarItem) => {
 
   return (
     <div className="sidebar-item" onClick={handleClick}>
-      <div className="flex items-center gap-2">
+      {/* column layout in middle screens */}
+      <div className="sidebar-item-title">
         {icon}
         <h3>{title}</h3>
       </div>
@@ -81,15 +82,21 @@ const AboutCard = () => (
   </Card>
 );
 
-const ContactCard = () => (
-  <Card className="contact-box">
-    <div className="contact-subtitle">Have questions?</div>
-    <div className="contact-title">Contact me</div>
-    <div className="font-size: 2rem;" role="img" aria-label="Email">
-      <Mail />
-    </div>
-  </Card>
-);
+const ContactCard = () => {
+  const router = useRouter();
+  return (
+    <Card className="contact-box" onClick={() => router.push("/contact")}>
+      {/* <a href="/contact" className="hire-me">
+          Connect
+        </a> */}
+      <div className="contact-subtitle">Have questions?</div>
+      <div className="contact-title">Contact me</div>
+      <div className="font-size: 2rem;" role="img" aria-label="Email">
+        <Mail />
+      </div>
+    </Card>
+  );
+};
 
 export default function Home() {
   return (

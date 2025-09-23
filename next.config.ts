@@ -5,8 +5,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: "/portfolio",
-  assetPrefix: "/portfolio/",
+  // Doing this as the project is currently the user site on github
+  // You can have many project sites, but only one user site.
+  // The user site repo (username.github.io) is the one that occupies https://username.github.io/.
+  // basePath: "/portfolio",
+  // assetPrefix: "/portfolio/",
   trailingSlash: true,
 };
 

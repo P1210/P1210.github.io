@@ -1,103 +1,121 @@
+"use client";
+import { Card } from "@/components/ui/card";
+import "./styles/homePage.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FileText, Folder, Layout, Mail, Terminal } from "lucide-react";
+
+interface SidebarItem {
+  title: string;
+  data?: string;
+  icon: React.ReactNode;
+}
+
+const SIDEBAR_ITEMS: SidebarItem[] = [
+  {
+    title: "Resume Link",
+    data: "/Pranjal_Gupta_resume.pdf",
+    icon: <FileText size={20} />,
+  },
+  { title: "Featured Projects", data: "/projects", icon: <Folder size={20} /> },
+  {
+    title: "Product Case Studies",
+    data: "/case-studies",
+    icon: <Layout size={20} />,
+  },
+  { title: "Tech Stack", data: "/experience", icon: <Terminal size={20} /> },
+] as const;
+
+export const SidebarCard = ({ title, data, icon }: SidebarItem) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (data?.endsWith(".pdf")) {
+      window.open(data, "_blank");
+    } else {
+      router.push(data || "/");
+    }
+  };
+
+  return (
+    <div className="sidebar-item" onClick={handleClick}>
+      <div className="flex items-center gap-2">
+        {icon}
+        <h3>{title}</h3>
+      </div>
+      <span>→</span>
+    </div>
+  );
+};
+
+const HeroCard = () => (
+  <Card className="hero-card">
+    <div className="hero-text">
+      Product-focused <span className="highlight-text">frontend developer</span>{" "}
+      building user-centered digital experiences.
+    </div>
+  </Card>
+);
+
+const ProfileCard = () => (
+  <Card className="profile-card">
+    <Image
+      src="/luna-reading.svg"
+      alt="Frontend developer profile illustration"
+      rel="preload"
+      fill
+      className="profile-image"
+      priority
+    />
+  </Card>
+);
+
+const AboutCard = () => (
+  <Card className="about-card">
+    I am a Software Developer working in QuickGov Solutions, specializing in
+    React, JavaScript, and modern web technologies. My work merges technical
+    expertise with product thinking to create thoughtful, compelling digital
+    solutions. With a background in frontend developement, I bring a unique
+    perspective to user experience and product development, always focusing on
+    building applications that truly serve user needs and business objectives.
+  </Card>
+);
+
+const ContactCard = () => (
+  <Card className="contact-box">
+    <div className="contact-subtitle">Have questions?</div>
+    <div className="contact-title">Contact me</div>
+    <div className="font-size: 2rem;" role="img" aria-label="Email">
+      <Mail />
+    </div>
+  </Card>
+);
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex flex-col gap-6">
+      {/* Main Grid */}
+      <div className="top-container">
+        <HeroCard />
+        <ProfileCard />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+        {/* Sidebar Navigation */}
+        <div className="sidebar">
+          {SIDEBAR_ITEMS.map((item) => (
+            <SidebarCard
+              key={item.title}
+              title={item.title}
+              data={item.data}
+              icon={item.icon}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-4 md:gap-6">
+        <AboutCard />
+        <ContactCard />
+      </div>
     </div>
   );
 }

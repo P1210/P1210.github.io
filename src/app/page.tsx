@@ -64,7 +64,8 @@ const ProfileCard = () => (
       src="/luna-reading.svg"
       alt="Frontend developer profile illustration"
       rel="preload"
-      fill
+      height={200}
+      width={100}
       className="profile-image"
       priority
     />
@@ -100,7 +101,7 @@ const ContactCard = () => {
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 animate-fadeIn">
       {/* Main Grid */}
       <div className="top-container">
         <HeroCard />

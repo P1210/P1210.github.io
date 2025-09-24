@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavbarClient />
-        <div className="h-full p-8"> {children}</div>
+        <div className="h-full p-8 animate-fadeIn"> {children}</div>
       </body>
     </html>
   );

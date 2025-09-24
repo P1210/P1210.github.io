@@ -1,6 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity-: 1;
+    transform: translateY(0);
+  }
+}
+
 @theme {
   --color-brand-dark: #1a1a1a;
   --color-brand-light: #2d2d2d;
@@ -19,6 +30,9 @@
   /* Custom fonts */
   --font-family-serif: "Playfair Display", serif;
   --font-family-display: "Inter", sans-serif;
+
+  /* Animations */
+  --animate-fadeIn: fadeInUp 0.8s ease forwards;
 }
 
 /* Base styles using custom colors */

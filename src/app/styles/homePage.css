@@ -46,7 +46,7 @@
 }
 
 .profile-image {
-  @apply object-contain m-auto md:w-full md:h-full md:absolute py-4 lg:p-6; 
+  @apply object-contain m-auto md:w-full md:h-full md:absolute py-4 lg:p-6;
 }
 
 .sidebar {
@@ -80,14 +80,22 @@
 }
 
 .contact-box {
-  @apply text-[var(--color-brand-dark)] text-base/6 bg-[var(--color-rose-gold)] rounded-3xl hover:scale-105 flex flex-col justify-center items-center gap-4 border-none overflow-hidden cursor-pointer lg:col-span-1;
-}
+  @apply text-[var(--color-brand-dark)] text-base/6 bg-[var(--color-rose-gold-dark)] rounded-3xl  flex flex-col justify-between items-center gap-4 border-none overflow-hidden cursor-pointer lg:col-span-1 py-6;
 
-.contact-title {
-  @apply text-3xl font-semibold tracking-tight;
-}
+  .contact-title {
+    @apply text-3xl font-semibold tracking-tight;
+  }
 
-.contact-subtitle {
-  font-size: 0.9rem;
-  opacity: 0.8;
+  .contact-icons{
+    @apply flex flex-row justify-evenly w-full ;
+
+    .icon{
+      @apply p-3 bg-[var(--color-rose-gold)] rounded-full hover:scale-120 drop-shadow-md;
+      
+      svg {
+        @apply text-[var(--color-brand-dark)] stroke-2;
+      }
+    
+    }
+  }
 }

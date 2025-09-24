@@ -4,6 +4,8 @@ import "./styles/homePage.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FileText, Folder, Layout, Mail, Terminal } from "lucide-react";
+import { Linkedin } from "lucide-react";
+import { Github } from "lucide-react";
 
 interface SidebarItem {
   title: string;
@@ -84,16 +86,44 @@ const AboutCard = () => (
 );
 
 const ContactCard = () => {
-  const router = useRouter();
+  const contacts = [
+    {
+      icon: <Mail size={22} />,
+      label: "Email",
+      action: () => (window.location.href = "mailto:gpranjal1210@gmail.com"),
+    },
+    {
+      icon: <Linkedin size={22} />,
+      label: "LinkedIn",
+      action: () =>
+        window.open(
+          "https://www.linkedin.com/in/pranjal-gupta-b3320719b/",
+          "_blank"
+        ),
+    },
+    {
+      icon: <Github size={22} />,
+      label: "GitHub",
+      action: () => window.open("https://github.com/P1210", "_blank"),
+    },
+  ];
+
   return (
-    <Card className="contact-box" onClick={() => router.push("/contact")}>
-      {/* <a href="/contact" className="hire-me">
-          Connect
-        </a> */}
-      <div className="contact-subtitle">Have questions?</div>
-      <div className="contact-title">Contact me</div>
-      <div className="font-size: 2rem;" role="img" aria-label="Email">
-        <Mail />
+    <Card className="contact-box p-6">
+      <div className="contact-title">
+        Contact me ?
+      </div>
+      <div className="contact-icons ">
+        {contacts.map(({ icon, label, action }) => (
+          <button
+            key={label}
+            onClick={action}
+            className="icon"
+            aria-label={label}
+          >
+            {icon}
+          </button>
+        ))}
       </div>
     </Card>
   );

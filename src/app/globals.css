@@ -70,3 +70,10 @@ body {
 @utility text-hover {
   color: var(--color-light);
 }
+
+@utility pages-title {
+  @apply relative text-xl md:text-2xl font-medium w-full text-center text-light-brown mb-10 animate-fadeIn;
+  span {
+    @apply block relative w-full after:content-[''] after:rounded-full after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-[80px] after:h-[2px] after:bg-[var(--color-rose-gold-muted)];
+  }
+}

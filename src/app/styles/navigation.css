@@ -1,7 +1,7 @@
 @reference "../globals.css";
 
 .navbar-container {
-  @apply flex items-center w-full px-12 py-2 animate-fadeIn;
+  @apply flex flex-row-reverse md:flex-row items-center w-full px-12 py-2 relative z-50;
   background: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(228, 213, 199, 0.1);
@@ -78,7 +78,7 @@
 
   /* Mobile dropdown panel */
   .mobile-menu {
-    @apply block absolute top-[56px] left-0 right-0 bg-[var(--color-brand-dark)] backdrop-blur-[10px] border-b border-[rgba(228,213,199,0.1)] transform -translate-y-[8px] opacity-0 pointer-events-none transition-opacity duration-200 transition-transform duration-200;
+    @apply block absolute top-[56px] left-0 right-0 bg-[var(--color-brand-dark)] backdrop-blur-[10px] border-b border-[rgba(228,213,199,0.1)] transform -translate-y-[8px] opacity-0 pointer-events-none transition-opacity duration-200 transition-transform duration-200 z-40;
   }
   .mobile-menu-open {
     @apply translate-y-[0] opacity-100 pointer-events-auto;

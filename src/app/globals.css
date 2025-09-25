@@ -12,6 +12,18 @@
   }
 }
 
+@keyframes tilt {
+  0% {
+    transform: "rotateX(0deg) rotateY(0deg)";
+  }
+  50% {
+    transform: "rotateX(6deg) rotateY(6deg)";
+  }
+  100% {
+    transform: "rotateX(0deg) rotateY(0deg)";
+  }
+}
+
 @theme {
   --color-brand-dark: #1a1a1a;
   --color-brand-light: #2d2d2d;
@@ -33,6 +45,7 @@
 
   /* Animations */
   --animate-fadeIn: fadeInUp 0.8s ease forwards;
+  --animate-tilt: tilt 0.8s ease-in-out;
 }
 
 /* Base styles using custom colors */

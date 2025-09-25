@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
+import { ProjectList } from "./projects";
+import ProjectItemCard from "./ProjectItemCard";
+import "../styles/listPages.css";
 
 function ProjectSection() {
   return (
-    <div>Projects Section</div>
-  )
+    <div>
+      <div className="pages-title">
+        <span>Featured Projects</span>
+      </div>
+
+      <div className="items-list">
+        {ProjectList.map((project, index) => {
+          return <ProjectItemCard key={index} item={project} />;
+        })}
+      </div>
+    </div>
+  );
 }
 
-export default ProjectSection
+export default ProjectSection;

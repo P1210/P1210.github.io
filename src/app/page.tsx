@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { FileText, Folder, Layout, Mail, Terminal } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import { Github } from "lucide-react";
+import TiltCard from "./utils/TiltCard";
 
 interface SidebarItem {
   title: string;
@@ -53,10 +54,14 @@ export const SidebarCard = ({ title, data, icon }: SidebarItem) => {
 
 const HeroCard = () => (
   <Card className="hero-card">
-    <div className="hero-text">
-      Product-focused <span className="highlight-text">frontend developer</span>{" "}
-      building user-centered digital experiences.
-    </div>
+    <TiltCard>
+      {" "}
+      <div className="hero-text">
+        Product-focused{" "}
+        <span className="highlight-text">frontend developer</span> building
+        user-centered digital experiences.
+      </div>
+    </TiltCard>
   </Card>
 );
 
@@ -110,9 +115,7 @@ const ContactCard = () => {
 
   return (
     <Card className="contact-box p-6">
-      <div className="contact-title">
-        Contact me ?
-      </div>
+      <div className="contact-title">Contact me ?</div>
       <div className="contact-icons ">
         {contacts.map(({ icon, label, action }) => (
           <button

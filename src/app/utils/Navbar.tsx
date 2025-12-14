@@ -1,10 +1,10 @@
 "use client";
-import { Folder, Contact, UserCircle, HomeIcon } from "lucide-react";
+import { Folder, Contact, Terminal, HomeIcon } from "lucide-react";
 import { useEffect, useState, useRef, useCallback } from "react";
 
 const navItems = [
   { id: "home", icon: HomeIcon, title: "Home" },
-  { id: "skills", icon: UserCircle, title: "About" },
+  { id: "skills", icon: Terminal, title: "About" },
   { id: "projects", icon: Folder, title: "Projects" },
   { id: "contact", icon: Contact, title: "Contact" },
 ] as const;

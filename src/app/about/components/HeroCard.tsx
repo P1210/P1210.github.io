@@ -22,13 +22,27 @@ export const HeroCard = () => {
 
       <div className="quick-links">
         <div>Fine me on : </div>
-        <a href="#" className="item group" aria-label="Email">
+        <a
+          href="mailto:gpranjal1210@gmail.com"
+          className="item group"
+          aria-label="Email"
+        >
           <Mail size={22} className="icon" />
         </a>
-        <a href="#" className="item group" aria-label="LinkedIn">
+        <a
+          href="https://www.linkedin.com/in/pranjal-gupta-b3320719b/"
+          target="_blank"
+          className="item group"
+          aria-label="LinkedIn"
+        >
           <Linkedin size={22} className="icon" />
         </a>
-        <a href="#" className="item group" aria-label="GitHub">
+        <a
+          href="https://github.com/P1210"
+          target="_blank"
+          className="item group"
+          aria-label="GitHub"
+        >
           <Github size={22} className="icon" />
         </a>
       </div>

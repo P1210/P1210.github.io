@@ -1,6 +1,41 @@
 import type { Metadata } from "next";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import { NavbarClient } from "./Navbar";
+import dynamic from "next/dynamic";
+import CustomCursor from "./utils/CustomCursor";
+import { AnimatedBackground } from "./utils/AnimatedBackground";
+
+// // Lazy load non-critical components that don't need SSR
+// const CustomCursor = dynamic(() => import("@/app/utils/CustomCursor"), {
+//   ssr: false,
+// });
+
+// const AnimatedBackground = dynamic(
+//   () =>
+//     import("@/app/utils/AnimatedBackground").then((mod) => ({
+//       default: mod.AnimatedBackground,
+//     })),
+//   {
+//     ssr: false,
+//   }
+// );
+
+// Optimize font loading with next/font - eliminates render-blocking
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-playfair-display",
+  display: "swap",
+  preload: true,
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: "Pranjal Gupta",
@@ -13,10 +48,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable}`}>
       <body>
-        <NavbarClient />
-        <div className="h-full p-8 animate-fadeIn"> {children}</div>
+        <CustomCursor />
+        <div className="children-layout">{children}</div>
+        <AnimatedBackground />
       </body>
     </html>
   );

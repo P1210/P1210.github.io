@@ -1,0 +1,37 @@
+@reference "../globals.css";
+
+
+.social {
+  @apply grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-6 pt-8 pb-16 w-full animate-fadeIn;
+
+  .social-item {
+    @apply bg-brand-dark rounded-xl p-4 cursor-pointer border border-[var(--color-brand-muted)] w-full transition-all duration-300 hover:bg-[var(--color-brand-light)]/10;
+    @apply flex justify-between items-center lg:flex-row flex-nowrap gap-4;
+  }
+
+  .social-item-title {
+    @apply flex items-center flex-col sm:flex-row justify-start gap-4 md:gap-8 flex-1 ;
+  }
+
+  .view {
+    @apply flex flex-col;
+    .title {
+      @apply text-lg font-normal sm:text-base sm:font-extralight sm:text-accent-teal;
+    }
+    .data {
+      @apply hidden sm:block text-brand-medium text-base;
+    }
+  }
+
+  .copy {
+    @apply p-3 rounded-full  text-brand-medium hidden sm:block;
+
+    &.copied {
+      @apply p-2 rounded-full;
+    }
+
+    .check {
+      @apply text-green-500 stroke-5;
+    }
+  }
+}

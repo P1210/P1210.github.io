@@ -1,42 +1,43 @@
 @reference "../globals.css";
 
-.items-list {
-  @apply mx-auto grid grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-10 px-0 md:px-8 lg:px-32;
+.project-list {
+  @apply mb-4 md:mb-12 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-8;
+}
+
+/* Hide grid on small screens, show on md and up */
+.project-grid {
+  @apply hidden sm:grid;
+}
+
+/* Show carousel on small screens, hide on md and up */
+.project-carousel-wrapper {
+  @apply flex justify-center sm:hidden mb-4 md:mb-12 w-full py-8;
 }
 
 .item-card {
-  @apply flex flex-col gap-4 py-8 px-6 bg-[rgba(256,256,256,0.05)] border border-[rgba(256,256,256,0.5)] rounded-xl backdrop-blur-md transition-all duration-300 shadow-[0_4px_24px_-1px_var(--color-brand-dark),_0_0_16px_-1px_var(--color-brand-muted)_inset] cursor-pointer overflow-hidden animate-tilt;
+  @apply flex flex-col gap-3 p-6 bg-slate-950 border border-[var(--color-brand-muted)] rounded-xl overflow-hidden animate-fadeIn hover:border-2 hover:border-slate-400 hover:-translate-y-2 hover:bg-slate-900 delay-100 duration-300;
 
-  &::before {
-    @apply pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_center,var(--color-rose-gold)_0%,transparent_40%)];
+  .item-title {
+    @apply text-xl font-medium text-slate-200;
   }
 
-  &::after {
-    @apply pointer-events-none absolute top-0 left-0 right-0 h-20 rounded-t-xl bg-gradient-to-b from-black/30 to-transparent;
+  .item-description {
+    @apply text-xs text-slate-400 leading-relaxed duration-300;
   }
-}
 
-.item-title {
-  @apply text-2xl font-medium text-rose-gold transition-transform duration-300;
-}
-
-.item-description {
-  @apply text-sm text-default opacity-90 leading-relaxed flex-grow transition-opacity duration-300;
-}
-
-.item-chips {
-  @apply flex flex-wrap gap-2 mt-auto transition-transform duration-300;
-
-  .chip {
-    @apply text-sm text-rose-gold bg-rose-gold/10 px-3 py-1 rounded-full backdrop-blur-sm transition-all;
+  .item-chips {
+    @apply flex flex-wrap gap-2;
+    .chip {
+      @apply px-2 py-1 flex items-center rounded-full bg-[var(--color-accent-teal)]/10  text-[10px] font-medium leading-5 text-accent-teal;
+    }
   }
-}
 
-.item-links {
-  @apply flex gap-4 transition-transform duration-300;
+  .item-links {
+    @apply flex items-center gap-3 pt-2;
 
-  .link {
-    @apply flex items-center gap-2 text-light text-sm px-3 py-1.5 rounded-md transition-all hover:text-rose-gold hover:bg-white/5;
+    .link {
+      @apply flex items-center gap-2 text-brand-light text-sm px-3 py-1.5 rounded-md transition-all cursor-none hover:cursor-pointer hover:bg-white/5;
+    }
   }
 }
 

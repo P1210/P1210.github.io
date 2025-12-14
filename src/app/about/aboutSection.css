@@ -1,0 +1,97 @@
+@reference "../globals.css";
+
+.about-section {
+  /* @apply min-h-screen py-16 px-12 grid grid-cols-2 gap-4 items-center max-w-7xl mx-auto w-full; */
+  @apply w-full h-auto md:min-h-[60vh] lg:min-h-[90vh] grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-2 lg:gap-5 mt-10 sm:mt-0;
+  /* bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900; */
+}
+
+.hero-card {
+  @apply flex flex-col overflow-hidden border-none rounded-none gap-8 md:gap-20;
+
+  .hero-text {
+    @apply text-center flex flex-col md:text-left;
+
+    h1 {
+      @apply font-bold tracking-tight animate-fadeIn text-4xl md:text-5xl lg:text-6xl;
+      /* @apply text-6xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent animate-fadeIn; */
+    }
+
+    .profession {
+      @apply flex flex-row items-center justify-center md:justify-start mt-4 md:mt-6;
+      span {
+        @apply font-medium tracking-tight text-accent-cyan md:text-brand-medium text-sm md:text-base lg:text-xl;
+      }
+      div {
+        @apply h-px w-24 bg-gradient-to-r from-blue-500 to-transparent hidden sm:inline;
+      }
+    }
+
+    p {
+      @apply leading-normal text-slate-400 text-sm md:text-base lg:text-lg mt-4 md:mt-12 md:w-[90%];
+    }
+  }
+
+  .quick-links {
+    @apply flex items-center space-x-4 justify-center md:justify-start m-0;
+
+    div {
+      @apply text-sm text-brand-medium hidden md:inline;
+    }
+
+    .item {
+      @apply p-3 bg-[var(--color-brand-dark)] backdrop-blur-sm rounded-xl border-none border-[var(--color-brand-muted)] hover:border-slate-600 hover:bg-slate-700/50 transition-all duration-300 cursor-none;
+    }
+
+    .icon {
+      @apply text-brand-medium group-hover:text-white transition-colors;
+    }
+  }
+}
+
+/* Profile Card hidden on mobile */
+.profile-section {
+  @apply h-full border-none relative flex items-center justify-center;
+  .profile-card {
+    @apply w-60 h-60 z-100 rounded-full md:w-80 md:h-80;
+    .profile-image {
+      @apply object-contain rounded-3xl scale-100 w-full h-full;
+    }
+  }
+
+  .bg-card {
+    @apply rounded-3xl w-60 h-60 z-[-100px] absolute opacity-20 blur-[1px] transform-3d md:w-70 md:h-70 lg:w-80 lg:h-80;
+    &.cyan {
+      @apply bg-[var(--color-accent-cyan)] rotate-45;
+    }
+
+    &.blue {
+      @apply bg-[var(--color-accent-blue)] rotate-60;
+    }
+  }
+}
+
+.sidebar {
+  @apply hidden lg:flex flex-col gap-6 items-center;
+
+  .sidebar-item {
+    @apply bg-brand-dark rounded-xl p-4 lg:p-5 border border-[var(--color-brand-muted)] flex justify-between items-center sm:flex-col lg:flex-row transition-all duration-300 hover:bg-[color-blue-500] hover:ring-2 hover:ring-blue-500/50 hover:translate-x-1 hover:scale-105 w-80;
+
+    .sidebar-item-title {
+      @apply flex items-center md:flex-col lg:flex-row justify-center gap-2;
+    }
+
+    .sidebar-item h3 {
+      @apply font-normal text-lg text-center;
+    }
+
+    .sidebar-item span {
+      /* Arrow Hidden on mobile */
+      @apply sm:hidden lg:block;
+    }
+
+    .sidebar-item::after {
+      @apply text-[#c4a484] text-xl transition-transform duration-300 group-hover:translate-x-2;
+    }
+  }
+}

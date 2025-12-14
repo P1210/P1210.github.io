@@ -63,6 +63,20 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide scrollbar but keep scrolling on touch devices */
+@media (pointer: coarse) {
+  html,
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 h1,
 h2,
 h3,
